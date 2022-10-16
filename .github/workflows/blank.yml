@@ -1,0 +1,24 @@
+name: taigulova-CI_CD
+ 
+on: 
+    workflow_dispatch:
+        inputs:
+            comment:
+                description: 'Комментарий'
+    push:
+        branches: 
+            - main
+            - dev
+jobs:
+  Test: 
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout perository
+          uses: actions/checkout@v2
+        - name: setup python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.9
+        - name: testing
+          run: |
+            python test_1.py
